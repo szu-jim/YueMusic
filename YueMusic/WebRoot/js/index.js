@@ -25,12 +25,12 @@ function now(id){
 
 	$.ajax( {  
 		type : "post",  
-     url : "getMusicDetailByID",  
-     data : "id="+id,  
-     dataType: "json", 
-     //contentType: "application/x-www-form-urlencoded; charset=utf-8", 
-     async:false, 
-     success : function(msg) {  
+    	url : "getMusicDetailByID",  
+    	data : "id="+id,  
+    	dataType: "json", 
+    	 //contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+    	 async:false, 
+    	 success : function(msg) {  
         	$.each(msg.detailInfo, function (index, item){
 	      		var temp={};		
 	   			temp.mp3=item.song_path;
