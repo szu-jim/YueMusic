@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>歌曲排行榜</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link type="text/css" href="css/base.css" rel="stylesheet" />
+<link type="text/css" href="css/rank.css" rel="stylesheet" />
+<script src="js/rank.js"></script>
+</head>
+
+<body>
+<div class="top">
+	<div class="top_m">
+		<div class="logo">音粤之声</div>
+    </div>
+</div>
+<div class="nav">
+    <div class="nav_m">
+  	    <ul class="active">
+    		<li><a href="index.html">主页</a></li>
+    		<li><a href="singers.html">歌手</a></li>
+    		<li><a class="on" href="#">排行榜</a></li>
+    		<li><a href="class.html">分类</a></li>
+  		</ul>
+    </div>
+</div>
+<div class="main">
+	<div id="left">
+        <div class="all"><a class="on" href="#">酷音乐粤语榜</a></div>
+    	<div class="all"><a href="#">粤语金曲榜</a></div>	
+    	<div class="all"><a href="#">香港劲歌金榜</a></div>
+        <div class="all"><a href="#">粤语新歌榜</a></div>
+        <div class="all"><a href="#">站长推荐</a></div>
+    </div>		
+    <div id="right">
+    	<div class="right_m">
+    	<div class="l_tittle">歌曲榜</div>
+        <div class="rank" style="height:630px">
+            <ol style="list-style-position:inside">
+            	<li id="101"></li>
+                <li id="102"></li>
+                <li id="103"></li>
+                <li id="104"></li>
+                <li id="105"></li>
+                <li id="106"></li>
+                <li id="107"></li>
+                <li id="108"></li>
+                <li id="109"></li>
+                <li id="110"></li>                
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="111"></li>
+                <li id="112"></li>
+                <li id="113"></li>
+                <li id="114"></li>
+                <li id="115"></li>
+                <li id="116"></li>
+                <li id="117"></li>
+                <li id="118"></li>
+                <li id="119"></li>
+                <li id="120"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="121"></li>
+                <li id="122"></li>
+                <li id="123"></li>
+                <li id="124"></li>
+                <li id="125"></li>
+                <li id="126"></li>
+                <li id="127"></li>
+                <li id="128"></li>
+                <li id="129"></li>
+                <li id="130"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="131"></li>
+                <li id="132"></li>
+                <li id="133"></li>
+                <li id="134"></li>
+                <li id="135"></li>
+                <li id="136"></li>
+                <li id="137"></li>
+                <li id="138"></li>
+                <li id="139"></li>
+                <li id="140"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="141"></li>
+                <li id="142"></li>
+                <li id="143"></li>
+                <li id="144"></li>
+                <li id="145"></li>
+                <li id="146"></li>
+                <li id="147"></li>
+                <li id="148"></li>
+                <li id="149"></li>
+                <li id="150"></li>
+            </ol>
+    	</div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+<p>copyright&copy;2016版权所有</p>
+<p>联系方式：812329595@qq.com</p>
+</div>
+<div class="player">
+	<div class="player_m">
+		<audio id="audio"></audio>
+        <div class="control">
+			<div class="left">
+				<div class="rewind icon"></div>
+				<div id="play" class="playback icon"></div>
+				<div class="fastforward icon"></div>
+			</div>
+		</div>
+        <div class="progress">
+        	<div class="timer left">00:00</div>
+            <div class="middle">
+                <div class="p_top"></div>
+            	<div class="p_bottom">
+					<div class="slider">
+						<div class="loaded"></div>
+						<div class="pace"></div>
+                		<a></a>
+					</div>
+            	</div>
+            </div>
+            <div class="right">00:00</div>
+		</div>
+        <div class="volume">
+        	<div class="left">
+				<div class="mute icon"></div>
+            </div>
+			<div class="right">
+            	<div class="slider">
+					<div class="pace"></div>
+                </div>
+			</div>
+		</div>
+		<div class="type">
+			<div class="icon type1"></div>
+		</div>
+		<div class="type">
+			<div class="icon type2"></div>
+		</div>
+    </div>
+</div>
+<script src="js/base.js"></script>
+<script src="js/index.js">  </script>
+</body>
+</html>
+

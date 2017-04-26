@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>歌曲分类</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link type="text/css" href="css/base.css" rel="stylesheet" />
+<link type="text/css" href="css/class.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    window.onload=function(){
+        var atop=document.getElementById("left");
+		var top=document.getElementById("right");
+        var a=atop.getElementsByTagName("a");
+		var p=atop.getElementsByTagName("p");
+        var ul=top.getElementsByTagName("ol");
+        
+        //从数据库导入列表上的歌曲信息
+        var rank=document.getElementsByClassName('rank');
+    	for(k=0;k<rank.length;k++){
+    	var rli=rank[k].getElementsByTagName("li");
+    	for(j=0;j<rli.length;j++){
+    		var liid = $('.rank').eq(k).find('li').eq(j).attr("id");
+    		getInfo(liid);
+    		$('.rank').eq(k).find('li').eq(j).html('<span class="singername">'+infolist[0].singer+'</span>--<span class="songname">'+infolist[0].song+'</span>');
+    	}
+    	}
+
+    	// JS实现选项卡切换
+        for(var i=0;i<a.length;i++){
+            a[i].index=i;			
+            a[i].onmouseover=function(){
+				
+                for(var j=0;j<a.length;j++){
+                    a[j].className="";
+                }
+                this.className="on";
+				for(var j=0;j<p.length;j++){
+                    p[j].className='hide';
+                }
+                p[this.index].className='';
+				$('.pic').removeClass('hide');
+                for(var j=0;j<ul.length;j++){
+                    ul[j].className="hide";
+                }
+                ul[this.index].className="";
+            }
+        }
+    }
+</script>
+</head>
+
+<body>
+<div class="top">
+	<div class="top_m">
+		<div class="logo">音粤之声</div>
+    </div>
+</div>
+<div class="nav">
+    <div class="nav_m">
+  	    <ul class="active">
+    		<li><a href="index.html">主页</a></li>
+    		<li><a href="singers.html">歌手</a></li>
+    		<li><a href="rank.html">排行榜</a></li>
+    		<li><a class="on" href="">分类</a></li>
+  		</ul>
+    </div>
+</div>
+<div class="main">
+	<div id="left">
+    	<p style="width:200px;height:200px;"><img src="img/1455592122915_132026710b.jpg" width="150" height="150"></p>
+        <div class="all"><a class="on" href="#">情歌</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/t018561680731b7f0a6.jpg" width="150" height="150"></p>
+    	<div class="all"><a href="#">劲爆</a></div>	
+        <p style="width:200px;height:200px;" class="hide"><img src="img/SXRB201409170952470455538195898.jpg" width="150" height="150"></p>
+    	<div class="all"><a href="#">清新</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/12591032_993199.jpg" width="150" height="150"></p>
+        <div class="all"><a href="#">对唱</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/u=1277856815,56057714&fm=21&gp=0.jpg" width="150" height="150"></p>
+        <div class="all"><a href="#">安静</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/33713948_1398808646310_mthumb.jpg" width="150" height="150"></p>
+        <div class="all"><a href="#">校园</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/U11753P115DT20141125143142.png" width="150" height="150"></p>
+        <div class="all"><a href="#">经典</a></div>
+        <p style="width:200px;height:200px;" class="hide"><img src="img/560e5a8add371818.jpg!600x600.jpg" width="150" height="150"></p>
+        <div class="all"><a href="#">忧伤</a></div>
+    </div>		
+    <div id="right">
+    	<div class="right_m">
+    	<div class="l_tittle">歌曲类</div>
+        <div class="rank" style="height:630px">
+            <ol style="list-style-position:inside">
+            	<li id="199">11</li>
+                <li id="200"></li>
+                <li id="201"></li>
+                <li id="202"></li>
+                <li id="203"></li>
+                <li id="204"></li>
+                <li id="205"></li>
+                <li id="206"></li>
+                <li id="207"></li>
+                <li id="208"></li>
+            </ol>         
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="169"></li>
+                <li id="170"></li>
+                <li id="171"></li>
+                <li id="172"></li>
+                <li id="173"></li>
+                <li id="174"></li>
+                <li id="175"></li>
+                <li id="176"></li>
+                <li id="177"></li>
+                <li id="178"></li>
+            </ol>           
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="189"></li>
+            	<li id="190"></li>
+            	<li id="191"></li>
+            	<li id="192"></li>
+            	<li id="193"></li>
+            	<li id="194"></li>
+            	<li id="195"></li>
+            	<li id="196"></li>
+            	<li id="197"></li>
+            	<li id="198"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="161"></li>
+            	<li id="162"></li>
+            	<li id="163"></li>
+            	<li id="164"></li>
+            	<li id="165"></li>
+            	<li id="166"></li>
+            	<li id="167"></li>
+            	<li id="168"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="151"></li>
+            	<li id="152"></li>
+            	<li id="153"></li>
+            	<li id="154"></li>
+            	<li id="155"></li>
+            	<li id="156"></li>
+            	<li id="157"></li>
+            	<li id="158"></li>
+            	<li id="159"></li>
+            	<li id="160"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="209"></li>
+            	<li id="210"></li>
+            	<li id="211"></li>
+            	<li id="212"></li>
+            	<li id="213"></li>
+            	<li id="214"></li>
+            	<li id="215"></li>
+            	<li id="216"></li>
+            	<li id="217"></li>
+            	<li id="218"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="179"></li>
+            	<li id="180"></li>
+            	<li id="181"></li>
+            	<li id="182"></li>
+            	<li id="183"></li>
+            	<li id="184"></li>
+            	<li id="185"></li>
+            	<li id="186"></li>
+            	<li id="187"></li>
+            	<li id="188"></li>
+            </ol>
+            <ol style="list-style-position:inside" class="hide">
+            	<li id="219"></li>
+            	<li id="220"></li>
+            	<li id="221"></li>
+            	<li id="222"></li>
+            	<li id="223"></li>
+            	<li id="224"></li>
+            	<li id="225"></li>
+            	<li id="226"></li>
+            	<li id="227"></li>
+            	<li id="228"></li>
+            </ol>
+    	</div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+<p>copyright&copy;2016版权所有</p>
+<p>联系方式：812329595@qq.com</p>
+</div>
+<div class="player">
+	<div class="player_m">
+		<audio id="audio"></audio>
+        <div class="control">
+			<div class="left">
+				<div class="rewind icon"></div>
+				<div id="play" class="playback icon"></div>
+				<div class="fastforward icon"></div>
+			</div>
+		</div>
+        <div class="progress">
+        	<div class="timer left">00:00</div>
+            <div class="middle">
+                <div class="p_top"></div>
+            	<div class="p_bottom">
+					<div class="slider">
+						<div class="loaded"></div>
+						<div class="pace"></div>
+                		<a></a>
+					</div>
+            	</div>
+            </div>
+            <div class="right">00:00</div>
+		</div>
+        <div class="volume">
+        	<div class="left">
+				<div class="mute icon"></div>
+            </div>
+			<div class="right">
+            	<div class="slider">
+					<div class="pace"></div>
+                </div>
+			</div>
+		</div>
+		<div class="type">
+			<div class="icon type1"></div>
+		</div>
+		<div class="type">
+			<div class="icon type2"></div>
+		</div>
+    </div>
+</div>
+<script src="js/base.js"></script>
+<script src="js/index.js">  </script>
+</body>
+</html>

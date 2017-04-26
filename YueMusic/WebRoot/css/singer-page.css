@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+.main{width:1000px;height:730px;margin:0 auto;border:1px solid RGB(225,225,225);}
+.main .left{width:298px;height:730px;float:left;background-color:RGB(249,249,249)}
+.main .right{width:700px;height:730px;float:right;background-color:#FFF;}
+.right_m{width:600px;height:730px;margin:0 auto;}
+.l_tittle{height:25px;font-size:20px;padding:10px 0 0 10px;border-bottom:5px solid #F09;color:#F60;font-weight:800;}
+.rank li{padding:12px 0 10px 10px;background-color:RGB(247,247,247);margin-top:20px;height:20px;display:block;box-shadow:2px 2px 8px RGB(225,225,225);cursor: pointer;border-radius:10px;}
+.rank li:hover{background-color:RGB(230,230,230);box-shadow:1px 1px 4px RGB(225,225,225);border-radius:10px;cursor: pointer;}
+.songname{color:#39C;font-size:15px;}
+.introduce{padding:10px 20px;line-height:150%}
+
+
+.rank li:hover{background-color:RGB(230,230,230);box-shadow:1px 1px 4px RGB(225,225,225);border-radius:10px;}
+
+.page{height:100px;width:600px;}
+.page_m{margin-left:250px;}
+.page a{margin:0 10px;}
+.page a.on{color:black;}
+.page a:visited{color:blue;}
