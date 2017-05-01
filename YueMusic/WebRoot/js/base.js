@@ -1,4 +1,5 @@
 // JavaScript Document
+$(function(){
         var audioEle = $("audio")[0];
         var playType = localStorage.playType || 0;
         if(playType == 0){
@@ -187,3 +188,5 @@
 			setVolume(0);
 		}
 	});
+	
+})
