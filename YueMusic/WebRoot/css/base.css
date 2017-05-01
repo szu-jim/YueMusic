@@ -35,6 +35,7 @@ ul{list-style:none;}
   -webkit-transition:opacity 0.3s;
   -o-transition:opacity 0.3s;
   transition:opacity 0.3s;}
+.icon:hover{opacity:1;}  
 .playback{background-image:url(../images/play.png)}
 .rewind{background-image:url(../images/rewind.png)}
 .fastforward{background-image:url(../images/fastforward.png)}
@@ -107,10 +108,10 @@ ul{list-style:none;}
   -ms-border-radius: 50%;
   -khtml-border-radius: 50%;
   border-radius: 50%;
-  -moz-transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+  -moz-transition:opacity 0.3s;
+  -webkit-transition:opacity 0.3s;
+  -o-transition:opacity 0.3s;
+  transition:opacity 0.3s;
 }
 
 

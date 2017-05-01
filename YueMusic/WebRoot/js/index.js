@@ -1,13 +1,11 @@
 // JavaScript Document
 var playlist=new Array();	
-var infolist=new Array();
 var firstSongID;
 var lastSongID;
 var nowNumber;
 
 $('.rank li').click(function(){
 	var this_id = $(this).attr("id");
-	//alert(""+this_id);
 	now(this_id);
 	audioEle.src=playlist[1].mp3;
 	audioEle.play();    //播放
@@ -158,27 +156,7 @@ function return2Last(){
 	
 }
 
-function getInfo(id){ 
 
-	$.ajax( {  
-		type : "post",  
-     url : "getMusicDetailByID",  
-     data : "id="+id,  
-     dataType: "json", 
-     //contentType: "application/x-www-form-urlencoded; charset=utf-8", 
-     async:false, 
-     success : function(msg) {  
-        	$.each(msg.detailInfo, function (index, item){
-	      		var temp={};		
-	   			temp.song=item.song;
-	   			temp.singer=item.singer;
-	   			temp.id=item.id;
-	   			infolist[0] = temp;
-	  		 });
-        }  
-    });	
-	//alert(infolist[0].singer);
-}
 
 
 

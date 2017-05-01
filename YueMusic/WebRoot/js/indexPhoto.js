@@ -5,13 +5,13 @@ $(function () {
             var buttons = $('#buttons span');
             var prev = $('#prev');
             var next = $('#next');
-            var index = 1;
-            var len = 5;
-            var interval = 3000;
+            var index = 1;  /*代表当前图片*/
+            var picNum = 5;   /*图片个数*/
+			var picLen = 750;  /*单张图片长度*/
+            var interval = 3000;  /*滚动时间*/
             var timer;
 
-
-            function animate (offset) {
+            function myAnimate (offset) {
                 var left = parseInt(list.css('left')) + offset;
                 if (offset>0) {
                     offset = '+=' + offset;
@@ -21,10 +21,10 @@ $(function () {
                 }
                 list.animate({'left': offset}, 300, function () {
                     if(left > -200){
-                        list.css('left', -750 * len);
+                        list.css('left', -picLen * picNum);
                     }
-                    if(left < (-750 * len)) {
-                        list.css('left', -750);
+                    if(left < (-picLen * picNum)) {
+                        list.css('left', -picLen);
                     }
                 });
             }
@@ -34,14 +34,12 @@ $(function () {
             }
 
             function play() {
-                timer = setTimeout(function () {
+                timer = setInterval(function () {
                     next.trigger('click');
-					change();
-                    play();
                 }, interval);
             }
             function stop() {
-                clearTimeout(timer);
+                clearInterval(timer);
             }
 
             next.bind('click', function () {
@@ -54,7 +52,7 @@ $(function () {
                 else {
                     index += 1;
                 }
-                animate(-750);
+                myAnimate(-picLen);
                 showButton();
 				change();
             });
@@ -69,20 +67,33 @@ $(function () {
                 else {
                     index -= 1;
                 }
-                animate(750);
+                myAnimate(picLen);
                 showButton();
 				change();
             });
+			
+			/*改变背景颜色*/
+			function change(){
+			switch(index){
+				case 1:$('.main-top').css('background-color','RGB(236,233,226)');break;
+				case 2:$('.main-top').css('background-color','RGB(6,0,96)');break;
+				case 3:$('.main-top').css('background-color','RGB(57,57,57)');break;
+				case 4:$('.main-top').css('background-color','RGB(94,155,199)');break;
+				case 5:$('.main-top').css('background-color','RGB(4,6,19)');break;
+			}
+			}
 
+			/*以下为执行代码*/
+			
             buttons.each(function () {
                  $(this).bind('click', function () {
                      if (list.is(':animated') || $(this).attr('class')=='on') {
                          return;
                      }
-                     var myIndex = parseInt($(this).attr('index'));
-                     var offset = -750 * (myIndex - index);
+                     var myIndex = parseInt($(this).attr('index'));  //获取要按下的index值
+                     var offset = -picLen * (myIndex - index);
 
-                     animate(offset);
+                     myAnimate(offset);
                      index = myIndex;
                      showButton();
 					 change();
@@ -93,14 +104,6 @@ $(function () {
 
             play();
 			
-			function change(){
-			switch(index){
-				case 1:$('.main-top').css('background-color','RGB(236,233,226)');break;
-				case 2:$('.main-top').css('background-color','RGB(6,0,96)');break;
-				case 3:$('.main-top').css('background-color','RGB(57,57,57)');break;
-				case 4:$('.main-top').css('background-color','RGB(94,155,199)');break;
-				case 5:$('.main-top').css('background-color','RGB(4,6,19)');break;
-			}
-			}
+			
 
         });
