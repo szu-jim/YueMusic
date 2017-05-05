@@ -1,8 +1,9 @@
 // JavaScript Document
 $(function(){
 	
-	var playById={};
-	var nowId;
+	var playItem={};
+	var nowId,nowNum;
+	var musicGroup;
 	var audioEle = $("audio")[0];
     var playType = localStorage.playType || 0;
 	var timeout;
@@ -26,32 +27,63 @@ $(function(){
     	 async:false, 
     	 success : function(msg) {  
         	$.each(msg.detailInfo, function (index, item){		
-	   			playById.mp3=item.song_path;
-	   			playById.song=item.song;
-	   			playById.singer=item.singer;
-	   			playById.number=item.number;                  //歌曲在列表中的顺序
-	   			playById.id=item.id;
-	   			playById.amount=item.amount;                  //歌曲类别总数
-	   			playById.playTime=item.play_time;
-	   			playById.musicGroup=item.music_group;
+        		playItem.mp3=item.song_path;
+        		playItem.song=item.song;
+        		playItem.singer=item.singer;
+        		playItem.number=item.number;                  //歌曲在列表中的顺序
+        		playItem.id=item.id;
+        		playItem.amount=item.amount;                  //歌曲类别总数
+        		playItem.playTime=item.play_time;
+        		playItem.musicGroup=item.music_group;
 	  		 }); 
-		nowId = playById.id;
+		nowId = playItem.id;
+		nowNum = playItem.number;
 		} 
     });		
 }
-        
+      
+	function next(num){ 
+		musicGroup = playItem.musicGroup;
+		$.ajax( {  
+			type : "post",  
+	     url : "getMusicDetailByNumber",  
+	     data : "number="+num+"&musicGroup="+musicGroup.toString(),    
+	     dataType: "json", 
+	     contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+	     async:false, 
+	     success : function(msg) {  
+	        	$.each(msg.detailInfo, function (index, item){		
+	        		playItem.mp3=item.song_path;
+	        		playItem.song=item.song;
+	        		playItem.singer=item.singer;
+	        		playItem.playTime=item.play_time;
+	        		playItem.id=item.id;
+		  		 });
+	        	nowId = playItem.id;
+	        }  
+	    });
+		
+		
+	}
 		
 		//顺序播放
-		var audio = document.getElementById("audio"); 
-		audio.loop = false;
-		audio.addEventListener('ended', function () {  
-    	mynext();}, false);
+	audioEle.loop = false;
+	function eventListen(e,type,handler){
+		if(e.addEventListener){
+			e.addEventListener(type,handler,false);
+		}else if(e.attachEvent){
+			e.attachEvent("on"+type,handler);
+		}else{
+			e["on"+type]=handler;
+		}
+	}
+	eventListen(audioEle,'ended',function(){mynext()});
 		
 		$('.rank li').click(function(){
 			var this_id = $(this).attr("id");
 			now(this_id);			
-			setBG(playById);
-			setName(playById);			
+			setBG(playItem);
+			setName(playItem);			
 })
 
 		//播放按键
@@ -59,8 +91,8 @@ $(function(){
 			if ($(this).hasClass('playback')){	
 				audioEle.play();    //播放
 				$(this).removeClass('playback').addClass('pause');
-				$('.progress .middle .p_top').html('<div class="p_singername">'+playById.singer+'</div>'+'<div class="p_songname">'+playById.song+'</div>');		//获取歌名，歌手名
-				$('.progress .right').html(playlist[0].playTime);
+				$('.progress .middle .p_top').html('<div class="p_singername">'+playItem.singer+'</div>'+'<div class="p_songname">'+playItem.song+'</div>');		//获取歌名，歌手名
+				$('.progress .right').html(playItem.playTime);
 				timeout = setInterval(updateProgress, 1000);				
 			}else if($(this).hasClass('pause')){
 				audioEle.pause();    //暂停
@@ -103,38 +135,36 @@ $(function(){
 		
 		function mynext(){
 			if(playType == 0){
-				if(playById.number < playById.amount){
-					nowId ++;				
+				if(nowNum < playItem.amount){
+					nowNum ++;				
 			 	}else{
-			 		nowId =nowId-playById.amount+1;					
+			 		nowNum = 1;					
 				}
 			}else if(playType == 1){
-					time=new Date();
-					rankNum = time.getTime() % playById.amount;
-					nowId = nowId+rankNum-playById.number+1;
+					nowNum = Math.floor(Math.random()*playItem.amount+1);
 			}
-			now(nowId);
-			setBG(playById);
-			setName(playById);			
+			next(nowNum);
+			setBG(playItem);
+			setName(playItem);			
 		}
 		
 		//上一首	
 		$('.rewind').click(function(){
 			
 		if(playType == 0){
-				if(playById.number > 1){
+				if(playItem.number > 1){
 					nowId --;				
 			 	}else{
-			 		nowId =nowId+playById.amount-1;					
+			 		nowId =nowId+playItem.amount-1;					
 				}
 			}else if(playType == 1){
 					time=new Date();
-					rankNum = time.getTime() % playById.amount;
-					nowId = nowId+rankNum-playById.number+1;
+					rankNum = time.getTime() % playItem.amount;
+					nowId = nowId+rankNum-playItem.number+1;
 			}
 			now(nowId);
-			setBG(playById);
-			setName(playById);
+			setBG(playItem);
+			setName(playItem);
 		});
 		
 		//左时间计时
