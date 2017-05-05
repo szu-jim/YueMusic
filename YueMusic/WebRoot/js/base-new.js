@@ -7,8 +7,6 @@ $(function(){
 	var audioEle = $("audio")[0];
     var playType = localStorage.playType || 0;
 	var timeout;
-	var rankNum;
-	var time;
     if(playType == 0){
 		$('.type1').css('opacity','1');
 	}else if(playType == 1){
@@ -152,17 +150,15 @@ $(function(){
 		$('.rewind').click(function(){
 			
 		if(playType == 0){
-				if(playItem.number > 1){
-					nowId --;				
+				if(nowNum > 1){
+					nowNum --;				
 			 	}else{
-			 		nowId =nowId+playItem.amount-1;					
+			 		nowNum = playItem.amount;					
 				}
 			}else if(playType == 1){
-					time=new Date();
-					rankNum = time.getTime() % playItem.amount;
-					nowId = nowId+rankNum-playItem.number+1;
+				nowNum = Math.floor(Math.random()*playItem.amount+1);
 			}
-			now(nowId);
+			next(nowNum);
 			setBG(playItem);
 			setName(playItem);
 		});
