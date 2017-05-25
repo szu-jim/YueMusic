@@ -1,0 +1,1 @@
+window.onload=function(){for(var e=document.getElementById("left"),n=document.getElementById("right"),t=e.getElementsByTagName("a"),a=n.getElementsByTagName("ul"),l=0;l<t.length;l++)t[l].index=l,t[l].onmouseover=function(){for(e=0;e<t.length;e++)t[e].className="";this.className="on";for(var e=0;e<a.length;e++)a[e].className="hide";a[this.index].className="singer"}};
